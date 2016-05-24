@@ -1,17 +1,19 @@
 {
-  "name" : "tekkla/core-storage",
-  "description" : "A simple OOP storage library with iteration and array access.",
-  "license": "MIT",
-  "require" : {
-    "php" : ">=7.0.0"
-  },
-  "autoload" : {
-    "psr-0" : {
-      "Core\\Storage" : ""
-    }
-  },
-  "authors" : [ {
-    "name" : "Michael Zorn",
-    "email" : "tekkla@tekkla.de"
-  } ]
+    "name": "tekkla/core-storage",
+    "description": "A simple OOP storage library with iteration and array access.",
+    "license": "MIT",
+    "require": {
+        "php": ">=7.0.0"
+    },
+    "autoload": {
+        "psr-0": {
+            "Core\\Storage": ""
+        }
+    },
+    "authors": [
+        {
+            "name": "Michael Zorn",
+            "email": "tekkla@tekkla.de"
+        }
+    ]
 }
