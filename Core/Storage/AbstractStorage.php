@@ -5,7 +5,7 @@ namespace Core\Storage;
  * AbstractStorage.php
  *
  * @author Michael "Tekkla" Zorn <tekkla@tekkla.de>
- * @copyright 2016
+ * @copyright 2016-2017
  * @license MIT
  */
 abstract class AbstractStorage implements StorageInterface, \ArrayAccess, \IteratorAggregate
@@ -15,56 +15,51 @@ abstract class AbstractStorage implements StorageInterface, \ArrayAccess, \Itera
 
     /**
      *
-     * {@inheritDoc}
-     *
-     * @see \Core\Storage\AbstractStorage::getValue()
+     * {@inheritdoc}
+     * @see \Core\Storage\StorageInterface::getValue()
      */
-    public function getValue($key)
+    public function getValue(string $key)
     {
         if (! isset($this->data[$key])) {
             $this->data[$key] = new self();
         }
-
+        
         return $this->data[$key];
     }
 
     /**
      *
-     * {@inheritDoc}
-     *
+     * {@inheritdoc}
      * @see \Core\Storage\StorageInterface::setValue()
      */
-    public function setValue($key, $value)
+    public function setValue(string $key, $value)
     {
         $this->data[$key] = $value;
     }
 
     /**
      *
-     * {@inheritDoc}
-     *
+     * {@inheritdoc}
      * @see \Core\Storage\StorageInterface::get()
      */
-    public function get($key)
+    public function get(string $key)
     {
         return $this->getValue($key);
     }
 
     /**
      *
-     * {@inheritDoc}
-     *
+     * {@inheritdoc}
      * @see \Core\Storage\StorageInterface::set()
      */
-    public function set($key, $value)
+    public function set(string $key, $value)
     {
         $this->setValue($key, $value);
     }
 
     /**
      *
-     * {@inheritDoc}
-     *
+     * {@inheritdoc}
      * @see \Core\Storage\StorageInterface::__get()
      */
     public function __get($key)
@@ -74,8 +69,7 @@ abstract class AbstractStorage implements StorageInterface, \ArrayAccess, \Itera
 
     /**
      *
-     * {@inheritDoc}
-     *
+     * {@inheritdoc}
      * @see \Core\Storage\StorageInterface::__set()
      */
     public function __set($key, $value)
@@ -85,19 +79,17 @@ abstract class AbstractStorage implements StorageInterface, \ArrayAccess, \Itera
 
     /**
      *
-     * {@inheritDoc}
-     *
+     * {@inheritdoc}
      * @see \Core\Storage\StorageInterface::exists()
      */
-    public function exists($key)
+    public function exists($key): bool
     {
         return array_key_exists($key, $this->data);
     }
 
     /**
      *
-     * {@inheritDoc}
-     *
+     * {@inheritdoc}
      * @see \Core\Storage\StorageInterface::__isset()
      */
     public function __isset($offset)
@@ -105,22 +97,20 @@ abstract class AbstractStorage implements StorageInterface, \ArrayAccess, \Itera
         return $this->exists($offset);
     }
 
-    /**
-     *
-     * {@inheritDoc}
-     *
-     * @see ArrayAccess::offsetExists()
-     */
+/**
+ * 
+ * {@inheritDoc}
+ * @see\ArrayAccess::offsetExists()
+ */
     public function offsetExists($offset)
     {
         return $this->exists($offset);
     }
-
+    
     /**
-     *
+     * 
      * {@inheritDoc}
-     *
-     * @see ArrayAccess::offsetGet()
+     * @see\ArrayAccess::offsetGet()
      */
     public function offsetGet($offset)
     {
@@ -128,10 +118,9 @@ abstract class AbstractStorage implements StorageInterface, \ArrayAccess, \Itera
     }
 
     /**
-     *
+     * 
      * {@inheritDoc}
-     *
-     * @see ArrayAccess::offsetSet()
+     * @see\ArrayAccess::offsetSet()
      */
     public function offsetSet($offset, $value)
     {
@@ -139,10 +128,9 @@ abstract class AbstractStorage implements StorageInterface, \ArrayAccess, \Itera
     }
 
     /**
-     *
+     * 
      * {@inheritDoc}
-     *
-     * @see ArrayAccess::offsetUnset()
+     * @see\ArrayAccess::offsetUnset()
      */
     public function offsetUnset($offset)
     {
@@ -152,14 +140,12 @@ abstract class AbstractStorage implements StorageInterface, \ArrayAccess, \Itera
     }
 
     /**
-     *
+     * 
      * {@inheritDoc}
-     *
-     * @see IteratorAggregate::getIterator()
+     * @see \IteratorAggregate::getIterator()
      */
     public function getIterator()
     {
         return new \ArrayIterator($this->data);
     }
 }
-
