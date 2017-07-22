@@ -5,7 +5,7 @@ namespace Core\Storage;
  * StorageInterface.php
  *
  * @author Michael "Tekkla" Zorn <tekkla@tekkla.de>
- * @copyright 2016
+ * @copyright 2016-2017
  * @license MIT
  */
 interface StorageInterface
@@ -18,7 +18,7 @@ interface StorageInterface
      *
      * @return mixed
      */
-    public function getValue($key);
+    public function getValue(string $key);
 
     /**
      * Sets a value by key
@@ -26,7 +26,7 @@ interface StorageInterface
      * @param string $key
      * @param mixed $value
      */
-    public function setValue($key, $value);
+    public function setValue(string $key, $value);
 
     /**
      * Same as getValue() only shorter
@@ -35,7 +35,7 @@ interface StorageInterface
      *
      * @return mixed
      */
-    public function get($key);
+    public function get(string $key);
 
     /**
      * Same as setValue() only the short version
@@ -43,16 +43,16 @@ interface StorageInterface
      * @param string $key
      * @param mixed $value
      */
-    public function set($key, $value);
+    public function set(string $key, $value);
 
     /**
      * Checks for existance of an element by key
      *
      * @param string $key
      *
-     * @return boolean
+     * @return bool
      */
-    public function exists($key);
+    public function exists($key): bool;
 
     /**
      * Magic method version of getValue()
@@ -80,4 +80,3 @@ interface StorageInterface
      */
     public function __isset($key);
 }
-
