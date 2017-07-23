@@ -11,12 +11,16 @@ namespace Core\Storage;
 abstract class AbstractStorage implements StorageInterface, \ArrayAccess, \IteratorAggregate
 {
 
+    /**
+     *
+     * @var array
+     */
     protected $data = [];
 
     /**
      *
      * {@inheritdoc}
-     * @see \Core\Storage\StorageInterface::getValue()
+     * @see \Core\Storage\AbstractStorage::getValue()
      */
     public function getValue(string $key)
     {
@@ -97,20 +101,20 @@ abstract class AbstractStorage implements StorageInterface, \ArrayAccess, \Itera
         return $this->exists($offset);
     }
 
-/**
- * 
- * {@inheritDoc}
- * @see\ArrayAccess::offsetExists()
- */
+    /**
+     *
+     * {@inheritdoc}
+     * @see \ArrayAccess::offsetExists()
+     */
     public function offsetExists($offset)
     {
         return $this->exists($offset);
     }
     
     /**
-     * 
-     * {@inheritDoc}
-     * @see\ArrayAccess::offsetGet()
+     *
+     * {@inheritdoc}
+     * @see \ArrayAccess::offsetGet()
      */
     public function offsetGet($offset)
     {
@@ -118,9 +122,9 @@ abstract class AbstractStorage implements StorageInterface, \ArrayAccess, \Itera
     }
 
     /**
-     * 
-     * {@inheritDoc}
-     * @see\ArrayAccess::offsetSet()
+     *
+     * {@inheritdoc}
+     * @see \ArrayAccess::offsetSet()
      */
     public function offsetSet($offset, $value)
     {
@@ -128,9 +132,9 @@ abstract class AbstractStorage implements StorageInterface, \ArrayAccess, \Itera
     }
 
     /**
-     * 
-     * {@inheritDoc}
-     * @see\ArrayAccess::offsetUnset()
+     *
+     * {@inheritdoc}
+     * @see \ArrayAccess::offsetUnset()
      */
     public function offsetUnset($offset)
     {
@@ -140,8 +144,7 @@ abstract class AbstractStorage implements StorageInterface, \ArrayAccess, \Itera
     }
 
     /**
-     * 
-     * {@inheritDoc}
+     * {@inheritdoc}
      * @see \IteratorAggregate::getIterator()
      */
     public function getIterator()
