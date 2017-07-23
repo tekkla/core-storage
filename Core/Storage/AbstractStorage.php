@@ -110,7 +110,7 @@ abstract class AbstractStorage implements StorageInterface, \ArrayAccess, \Itera
     {
         return $this->exists($offset);
     }
-
+    
     /**
      *
      * {@inheritdoc}
@@ -144,7 +144,6 @@ abstract class AbstractStorage implements StorageInterface, \ArrayAccess, \Itera
     }
 
     /**
-     *
      * {@inheritdoc}
      * @see \IteratorAggregate::getIterator()
      */
@@ -153,4 +152,3 @@ abstract class AbstractStorage implements StorageInterface, \ArrayAccess, \Itera
         return new \ArrayIterator($this->data);
     }
 }
-

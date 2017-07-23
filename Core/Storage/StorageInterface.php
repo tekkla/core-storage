@@ -52,7 +52,7 @@ interface StorageInterface
      *
      * @return bool
      */
-    public function exists($key): bool;
+    public function exists(string $key): bool;
 
     /**
      * Magic method version of getValue()
