@@ -86,7 +86,7 @@ abstract class AbstractStorage implements StorageInterface, \ArrayAccess, \Itera
      * {@inheritdoc}
      * @see \Core\Storage\StorageInterface::exists()
      */
-    public function exists($key): bool
+    public function exists(string $key): bool
     {
         return array_key_exists($key, $this->data);
     }
